@@ -14,17 +14,34 @@ module.exports = {
   head: {
     title: pkg.name,
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      {
+        charset: 'utf-8'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: pkg.description
+      }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      }
+    ]
   },
 
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#333' },
+  loading: {
+    color: '#333'
+  },
 
   /*
    ** Global CSS
@@ -34,7 +51,12 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/wp-api-docker-connector', ssr: false }],
+  plugins: [
+    {
+      src: '~/plugins/wp-api-docker-connector',
+      ssr: false
+    }
+  ],
 
   /*
    ** Nuxt.js modules
@@ -47,7 +69,12 @@ module.exports = {
     [
       '~/modules/wp-api/index',
       {
-        endpoint: 'http://' + (process.env.WUXT_WP_CONTAINER ? process.env.WUXT_WP_CONTAINER : 'wp.wuxt') + ':80/wp-json/'
+        endpoint:
+          'http://' +
+          (process.env.WUXT_WP_CONTAINER
+            ? process.env.WUXT_WP_CONTAINER
+            : 'wp.wuxt') +
+          ':80/wp-json/'
       }
     ]
   ],
@@ -79,10 +106,17 @@ module.exports = {
   },
 
   generate: {
-    routes: function() {
+    routes() {
       return axios
-        .get('http://' + (process.env.WUXT_WP_CONTAINER ? process.env.WUXT_WP_CONTAINER : 'wp.wuxt') + ':80/wp-json/wuxt/v1/generate')
+        .get(
+          'http://' +
+            (process.env.WUXT_WP_CONTAINER
+              ? process.env.WUXT_WP_CONTAINER
+              : 'wp.wuxt') +
+            ':80/wp-json/wuxt/v1/generate'
+        )
         .then(({ data }) => data)
     }
-  }
+  },
+  buildModules: ['@nuxtjs/tailwindcss']
 }
