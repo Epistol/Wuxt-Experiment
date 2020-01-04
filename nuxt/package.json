@@ -27,7 +27,9 @@
     "wpapi": "^1.2.1"
   },
   "devDependencies": {
+    "@nuxt/typescript-build": "^0.5.5",
     "@nuxtjs/eslint-config": "^1.1.2",
+    "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "babel-eslint": "^10.0.3",
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.4.1",

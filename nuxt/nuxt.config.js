@@ -46,7 +46,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['@/assets/styles/main.scss'],
+  css: ['@/assets/styles/main.scss', '@/assets/css/tailwind.css'],
 
   /*
    ** Plugins to load before mounting the App
@@ -106,7 +106,7 @@ module.exports = {
   },
 
   generate: {
-    routes() {
+    routes () {
       return axios
         .get(
           'http://' +
@@ -118,5 +118,5 @@ module.exports = {
         .then(({ data }) => data)
     }
   },
-  buildModules: ['@nuxtjs/tailwindcss']
+  buildModules: ['@nuxtjs/tailwindcss', '@nuxt/typescript-build']
 }
