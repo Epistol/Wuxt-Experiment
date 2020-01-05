@@ -4,9 +4,9 @@
       <Logo />
 
       <nav class="header__nav">
-        <!-- <template v-for="" -->
-        <nuxt-link to="/hello-world">Hello World</nuxt-link>
-        <nuxt-link to="/sample-page">Sample Page</nuxt-link>
+        <template v-for="menu in getMenusItems">
+          <nuxt-link :key="menu" :to="menu">{{menu}}</nuxt-link>
+        </template>
       </nav>
     </header>
     <nuxt class="container" />
@@ -14,13 +14,29 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo'
+import {
+  SetupContext,
+  computed,
+  createComponent,
+  ref,
+  reactive,
+  onMounted
+} from '@vue/composition-api'
 
-export default {
+import Logo from '~/components/Logo'
+import useMenu from '~/composable/use-menu'
+
+export default createComponent({
   components: {
     Logo
+  },
+  setup(context) {
+    const { menu } = useMenu({ context })
+    return {
+      menu
+    }
   }
-}
+})
 </script>
 
 <style lang="scss">

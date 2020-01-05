@@ -1,7 +1,7 @@
-// tsconfig.json
 {
   "compilerOptions": {
-    "target": "es2018",
+    "experimentalDecorators": true,
+    "target": "es2020",
     "module": "esnext",
     "moduleResolution": "node",
     "lib": [
@@ -26,9 +26,16 @@
     "types": [
       "@types/node",
       "@nuxt/types"
-    ]
+    ],
+    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "globals": {
+    "it": false,
+    "expect": false
+  },
+  "allowSyntheticDefaultImports": true
+
 }
