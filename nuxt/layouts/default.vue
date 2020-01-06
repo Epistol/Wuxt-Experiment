@@ -1,15 +1,19 @@
 <template>
   <div id="app">
+    <Logo />
     <nuxt class="main-container" />
   </div>
 </template>
 
-<script lang="ts">
-import { SetupContext, createComponent } from '@vue/composition-api'
+<script>
+import { SetupContext, createComponent, ref } from '@vue/composition-api'
+import Logo from '~/components/Logo'
 
 export default createComponent({
   name: 'layoutDefault',
-
+  components: {
+    Logo
+  },
   setup(props, ctx) {}
 })
 </script>

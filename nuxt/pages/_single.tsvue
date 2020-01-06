@@ -1,0 +1,56 @@
+<template>
+  <div>
+    <nav class="header__nav">
+      <template v-for="menuElement in asyncData.menu">
+        <nuxt-link :key="menuElement.id" :to="menuElement.url">{{menuElement.title}}</nuxt-link>
+      </template>
+    </nav>
+
+    <Page v-if="asyncData.single.type === 'page'" :page="asyncData.single" />
+    <Post v-else :post="asyncData.single" />
+  </div>
+</template>
+
+<script>
+import {
+  computed,
+  createComponent,
+  ref,
+  reactive,
+  onMounted
+} from '@vue/composition-api'
+
+import useMenu from '~/composable/use-menu'
+
+import Page from '~/components/templates/Page'
+import Post from '~/components/templates/Post'
+
+export default createComponent({
+  name: 'layoutDefault',
+  components: {
+    Page,
+    Post
+  },
+  setup(props, ctx) {
+    const { menuElements, fetchData } = useMenu({ ctx })
+    console.info('menu', fetchData({ ctx }))
+
+    const asyncData = async ({ ctx }) => {
+      const { route, app } = ctx
+
+      try {
+        const single = await app.$wp.slug().name(route.params.single)
+        const menu = await app.$wp.menu().location('main')
+        return { single, menu }
+      } catch (e) {
+        return e
+      }
+    }
+
+    return {
+      menuElements,
+      asyncData
+    }
+  }
+})
+</script>

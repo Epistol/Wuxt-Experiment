@@ -22,11 +22,11 @@
       "@/*": [
         "./*"
       ],
-      "@@/*": ["./*"]
+      "@@/*": ["./nuxt/*"]
     },
     "types": [
       "@types/node",
-      "@nuxt/types"
+      "@nuxt/types",
     ],
     "skipLibCheck": true,
     "resolveJsonModule": true

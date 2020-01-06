@@ -3,12 +3,6 @@
     <div>
       <header class="header">
         <Logo />
-
-        <nav class="header__nav">
-          <template v-for="menu in menuElements.value">
-            <nuxt-link :key="menu" :to="menu">{{menu}}</nuxt-link>
-          </template>
-        </nav>
       </header>
       <nuxt class="container" />
     </div>
@@ -21,7 +15,7 @@
   </main>
 </template>
 
-<script lang="ts">
+<script>
 import {
   computed,
   createComponent,
@@ -31,7 +25,7 @@ import {
 } from '@vue/composition-api'
 
 import Logo from '~/components/Logo'
-import useMenu from '~/composable/use-menu'
+import Vue from 'vue'
 
 export default createComponent({
   name: 'layoutDefault',
@@ -39,11 +33,11 @@ export default createComponent({
     Logo
   },
   setup(props, ctx) {
-    let { menuElements, fetchData } = useMenu({ ctx })
-    console.info('menuElements', menuElements)
+    // const { menuElements, fetchData } = useMenu({ ctx })
+    // console.info('menu', fetchData({ ctx }))
 
     return {
-      menuElements
+      // menuElements
     }
   }
 })

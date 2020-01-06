@@ -1,6 +1,14 @@
 <template>
-  <Page v-if="single.type === 'page'" :page="single"/>
-  <Post v-else :post="single"/>
+  <div>
+    <nav class="header__nav">
+      <template v-for="menuElement in menuElements">
+        <nuxt-link :key="menuElement.id" :to="menuElement.url">{{menuElement.title}}</nuxt-link>
+      </template>
+    </nav>
+
+    <Page v-if="single.type === 'page'" :page="single" />
+    <Post v-else :post="single" />
+  </div>
 </template>
 
 <script>
@@ -13,7 +21,8 @@ export default {
 
     try {
       const single = await app.$wp.slug().name(route.params.single)
-      return { single }
+      const menuElements = await app.$wp.menu().location('main')
+      return { single, menuElements }
     } catch (e) {
       error(e)
     }
