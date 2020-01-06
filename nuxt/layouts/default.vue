@@ -1,41 +1,16 @@
 <template>
-  <div>
-    <header class="header">
-      <Logo />
-
-      <nav class="header__nav">
-        <template v-for="menu in getMenusItems">
-          <nuxt-link :key="menu" :to="menu">{{menu}}</nuxt-link>
-        </template>
-      </nav>
-    </header>
-    <nuxt class="container" />
+  <div id="app">
+    <nuxt class="main-container" />
   </div>
 </template>
 
-<script>
-import {
-  SetupContext,
-  computed,
-  createComponent,
-  ref,
-  reactive,
-  onMounted
-} from '@vue/composition-api'
-
-import Logo from '~/components/Logo'
-import useMenu from '~/composable/use-menu'
+<script lang="ts">
+import { SetupContext, createComponent } from '@vue/composition-api'
 
 export default createComponent({
-  components: {
-    Logo
-  },
-  setup(context) {
-    const { menu } = useMenu({ context })
-    return {
-      menu
-    }
-  }
+  name: 'layoutDefault',
+
+  setup(props, ctx) {}
 })
 </script>
 

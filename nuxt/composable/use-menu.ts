@@ -1,13 +1,10 @@
-import { ref, reactive, toRefs, SetupContext } from '@vue/composition-api'
+export default function useMenu({ ctx }: any) {
 
-interface Options {
-    ctx: SetupContext
-}
-
-export default function useMenu({ ctx }: Options) {
-    const menu = async ({ $axios }) => {
-        const response = await $axios.$get('/wp-json/wuxt/v1/menu')
+    const asyncMenu = async ({ ctx }: any) => {
+        // console.info('ctx', ctx.root.$wp.menu())
+        const menuItems = await ctx.root.$wp.menu()
+        return { menuItems }
     }
 
-    return { menu }
+    return { asyncMenu }
 }

@@ -13,8 +13,7 @@ module.exports = {
    */
   head: {
     title: pkg.name,
-    meta: [
-      {
+    meta: [{
         charset: 'utf-8'
       },
       {
@@ -27,13 +26,11 @@ module.exports = {
         content: pkg.description
       }
     ],
-    link: [
-      {
-        rel: 'icon',
-        type: 'image/x-icon',
-        href: '/favicon.ico'
-      }
-    ]
+    link: [{
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico'
+    }]
   },
 
   /*
@@ -51,11 +48,11 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    {
+  plugins: [{
       src: '~/plugins/wp-api-docker-connector',
       ssr: false
-    }
+    },
+    '@/plugins/composition-api'
   ],
 
   /*
@@ -69,11 +66,10 @@ module.exports = {
     [
       '~/modules/wp-api/index',
       {
-        endpoint:
-          'http://' +
-          (process.env.WUXT_WP_CONTAINER
-            ? process.env.WUXT_WP_CONTAINER
-            : 'wp.wuxt') +
+        endpoint: 'http://' +
+          (process.env.WUXT_WP_CONTAINER ?
+            process.env.WUXT_WP_CONTAINER :
+            'wp.wuxt') +
           ':80/wp-json/'
       }
     ]
@@ -106,16 +102,18 @@ module.exports = {
   },
 
   generate: {
-    routes () {
+    routes() {
       return axios
         .get(
           'http://' +
-            (process.env.WUXT_WP_CONTAINER
-              ? process.env.WUXT_WP_CONTAINER
-              : 'wp.wuxt') +
-            ':80/wp-json/wuxt/v1/generate'
+          (process.env.WUXT_WP_CONTAINER ?
+            process.env.WUXT_WP_CONTAINER :
+            'wp.wuxt') +
+          ':80/wp-json/wuxt/v1/generate'
         )
-        .then(({ data }) => data)
+        .then(({
+          data
+        }) => data)
     }
   },
   buildModules: ['@nuxtjs/tailwindcss', '@nuxt/typescript-build']

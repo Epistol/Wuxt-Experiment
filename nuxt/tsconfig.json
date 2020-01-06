@@ -21,12 +21,14 @@
       ],
       "@/*": [
         "./*"
-      ]
+      ],
+      "@@/*": ["./*"]
     },
     "types": [
       "@types/node",
       "@nuxt/types"
     ],
+    "skipLibCheck": true,
     "resolveJsonModule": true
   },
   "exclude": [
