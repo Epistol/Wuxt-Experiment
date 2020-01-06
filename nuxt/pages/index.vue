@@ -5,7 +5,7 @@
         <Logo />
 
         <nav class="header__nav">
-          <template v-for="menu in asyncMenu">
+          <template v-for="menu in menuElements.value">
             <nuxt-link :key="menu" :to="menu">{{menu}}</nuxt-link>
           </template>
         </nav>
@@ -39,12 +39,11 @@ export default createComponent({
     Logo
   },
   setup(props, ctx) {
-    const { asyncMenu } = useMenu({ ctx })
-    const { menuItems } = asyncMenu({ ctx })
-    console.info('asyncMenu', asyncMenu)
+    let { menuElements, fetchData } = useMenu({ ctx })
+    console.info('menuElements', menuElements)
 
     return {
-      asyncMenu
+      menuElements
     }
   }
 })
