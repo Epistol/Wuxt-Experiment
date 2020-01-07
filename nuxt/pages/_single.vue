@@ -2,7 +2,7 @@
   <div>
     <nav class="header__nav">
       <template v-for="menuElement in menuElements">
-        <nuxt-link :key="menuElement.id" :to="menuElement.url">{{menuElement.title}}</nuxt-link>
+        <a :key="menuElement.id" :href="menuElement.url">{{menuElement.title}}</a>
       </template>
     </nav>
 
