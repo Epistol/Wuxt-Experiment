@@ -6,16 +6,15 @@
 </template>
 
 <script>
-import { SetupContext, createComponent, ref } from '@vue/composition-api'
 import Logo from '~/components/Logo'
 
-export default createComponent({
+export default {
   name: 'layoutDefault',
+
   components: {
     Logo
-  },
-  setup(props, ctx) {}
-})
+  }
+}
 </script>
 
 <style lang="scss">
