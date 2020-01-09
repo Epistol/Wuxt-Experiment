@@ -1,4 +1,4 @@
-# WUXT = DO NOT USE
+# /!\ WUXT = DO NOT USE
 
 It doesn't work. Just, it works yes, but you can't dev on it : impossible to have any component to work, nobody knows why or how the execution cycle is broken and I don't have the strength to ressurect alone a project that didn't moved for 8 month for now.
 
