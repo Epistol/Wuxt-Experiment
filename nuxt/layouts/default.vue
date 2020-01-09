@@ -1,19 +1,12 @@
 <template>
   <div id="app">
-    <Logo />
-    <nuxt class="main-container" />
+    <nuxt class="container" />
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo'
-
 export default {
-  name: 'layoutDefault',
-
-  components: {
-    Logo
-  }
+  name: 'layoutDefault'
 }
 </script>
 

@@ -3,11 +3,12 @@
     <div>
       <header class="header">
         <Logo />
+        <Menu />
       </header>
       <nuxt class="container" />
     </div>
     <p>
-      <span class="bold">Wuxt</span> combines
+      <span class="bold">EPISTOL</span> combines
       <span class="bold italic">WordPress</span>, the worlds biggest CMS with
       <span class="bold italic">nuxt.js</span>, the most awesome front-end application framework yet.
     </p>
@@ -25,12 +26,14 @@ import {
 } from '@vue/composition-api'
 
 import Logo from '~/components/Logo'
+import Menu from '~/components/templates/Menu'
 import Vue from 'vue'
 
 export default createComponent({
   name: 'layoutDefault',
   components: {
-    Logo
+    Logo,
+    Menu
   },
   setup(props, ctx) {
     // const { menuElements, fetchData } = useMenu({ ctx })

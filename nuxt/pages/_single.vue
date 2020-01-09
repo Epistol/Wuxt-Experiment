@@ -1,9 +1,7 @@
 <template>
   <div>
     <nav class="header__nav">
-      <template v-for="menuElement in menuElements">
-        <a :key="menuElement.id" :href="menuElement.url">{{menuElement.title}}</a>
-      </template>
+      <Menu></Menu>
     </nav>
 
     <Page v-if="single.type === 'page'" :page="single" />
@@ -14,23 +12,13 @@
 <script>
 import Page from '~/components/templates/Page'
 import Post from '~/components/templates/Post'
+import Menu from '~/components/templates/Menu'
 
 export default {
-  async asyncData(context) {
-    const { route, app, error } = context
-
-    try {
-      const single = await app.$wp.slug().name(route.params.single)
-      const menuElements = await app.$wp.menu().location('main')
-      return { single, menuElements }
-    } catch (e) {
-      error(e)
-    }
-  },
-
   components: {
     Page,
-    Post
+    Post,
+    Menu
   }
 }
 </script>
